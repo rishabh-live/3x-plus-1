@@ -29,7 +29,6 @@ public class ThreeXPlusOne {
             while (x != 1) {
 
                 if (x % 2 == 0) {
-                    System.out.println(x);
                     if (x > highestPossible) {
                         highestPossible = x;
                         highestPoint = highestPoint + 1;
@@ -37,7 +36,6 @@ public class ThreeXPlusOne {
                     x = x / 2;
 
                 } else if (x % 2 != 0) {
-                    System.out.println(x);
                     if (x > highestPossible) {
                         highestPossible = x;
                         highestPoint = highestPoint + 1;
@@ -46,8 +44,8 @@ public class ThreeXPlusOne {
 
                 }
             }
-            System.out.println("Your password has " + highestPossible + " encKey and needs  " + highestPoint
-                    + " sha256 iterations");
+            System.out.println("Your password has " + highestPossible + " as Highest Possible No which was reached at  " + highestPoint
+                    + " Step.");
 
             for (int i = 0; i < highestPossible; i++) {
                 int j;
@@ -60,8 +58,10 @@ public class ThreeXPlusOne {
             }
 
             try {
-                System.out.println(
-                        "Enc generated : " + ThreeXPlusOne.getSHA(Integer.toString(new String(arr).hashCode())));
+                System.out.println("Enc generated : " + ThreeXPlusOne
+                        .bytesToHex(ThreeXPlusOne.getSHA(ThreeXPlusOne.bytesToHex(ThreeXPlusOne.getSHA(password))
+                                + ThreeXPlusOne.bytesToHex(ThreeXPlusOne.getSHA(Integer.toString(highestPoint)))
+                                + ThreeXPlusOne.bytesToHex(ThreeXPlusOne.getSHA(Integer.toString(highestPossible))))));
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
@@ -73,5 +73,17 @@ public class ThreeXPlusOne {
     public static byte[] getSHA(String input) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         return md.digest(input.getBytes(StandardCharsets.UTF_8));
+    }
+
+    public static String bytesToHex(byte[] hash) {
+        StringBuilder hexString = new StringBuilder(2 * hash.length);
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 }
