@@ -26,7 +26,7 @@ public class ThreeXPlusOne {
             int x = passwordLength;
             int highestPossible = 0;
             int highestPoint = 0;
-            while (x != 1) {
+            while (x != 4) {
 
                 if (x % 2 == 0) {
                     if (x > highestPossible) {
