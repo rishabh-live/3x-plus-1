@@ -1,7 +1,7 @@
 # 3x-Plus-1 #
 
 
-`3x-Plus-1` is a logarithmic encryption scheme that is based on the Collatz Problem.
+`3x-Plus-1` is an algorithmic encryption scheme that is based on the Collatz Problem.
 - - - - 
 ## Table of Contents
 * [Collatz Problem?](#collatz-problem?)
