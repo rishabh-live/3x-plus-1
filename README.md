@@ -31,3 +31,7 @@ This package utilizes the second approach.
 ## Feedback
 > If you have any feedback or suggestions, please feel free to reach out!
 - - - - 
+## Contributors
+<a href="https://github.com/rishabh-live/3x-plus-1/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=rishabh-live/3x-plus-1" />
+</a>
